@@ -1,104 +1,40 @@
-DiscoGAN
+Webcam demo for gender conversion using DiscoGAN
 =========================================
 
-Official PyTorch implementation of [Learning to Discover Cross-Domain Relations
-with Generative Adversarial Networks](https://arxiv.org/pdf/1703.05192.pdf). 
+This repo uses the default webcam for live gender conversion.
+The uploaded models were trained for ~200,000 iterations using the facescrub dataset.
 
-<img src="assets/discogan.png" width="600px">
-
-Prerequisites
+Additional Prerequisites
 -------------
-   - Python 2.7
-   - PyTorch
-   - Numpy/Scipy/Pandas
-   - Progressbar
-   - OpenCV
+   - Pygame
+
+Usage
+------------
+```usage: run_inference.py [-h] [--modelA MODELA] [--modelB MODELB]
+                        [--face_cascade FACE_CASCADE] [--device DEVICE]
+                        [--size SIZE] [--output OUTPUT] ```
+The currently used models are trained on the facescrub dataset for gender conversion (modelA: female -> male, modelB: male -> female).
+Just add your trained generators to the `/models/` path and set the parameters while calling `run_inference.py`
+
+Currently the default opencv haarcascade for frontal faces is used to detect your face.
+Try to use another face detector or try to smooth the detection, when the results are too noisy.
+Also you can try to adjust your webcam resolution defined in `run_inference.py` with `CAPTURE_SIZE`.
 
 
-Training DiscoGAN
+Run the demo
 ----------------
-### CelebA
-Download CelebA dataset using
+Use the following keys for:
+    - ESC: close application
+    - s: switch between both generators (male -> female, female -> male)
+    - p: pause application
+    - r: start recording. Each frame will be saved as `%03d.jpg % counter` in `./recording/`. Old frames will be overwritten.
 
-    $ python ./datasets/download.py celebA 
+You can easily convert the recorded frames to a .gif with `convert -delay 6 -loop 0 *.jpg myimage.gif`.
+Don't forget to set the right delay param based on your FPS. See [ImageMagick Delay param](http://www.imagemagick.org/script/command-line-options.php#delay) for more information.
 
-(Currently, the link for downloading [CelebA](http://mmlab.ie.cuhk.edu.hk/projects/CelebA.html) dataset is not available).
+Using a GTX 1080, I could achieve ~15 FPS, while using my laptop with CPU only (i3-2310M CPU @ 2.10GHz) yields ~4 FPS.
 
-To train gender conversion,
 
-    $ python ./discogan/image_translation.py --task_name='celebA' --style_A='Male'
-
-To train hair color conversion 
-
-    $ python ./discogan/image_translation.py --task_name='celebA' --style_A='Blond_Hair' --style_B='Black_Hair' --constraint='Male'
-
-### Handbags / Shoes
-Download Edges2Handbags dataset using 
-
-    $ python ./datasets/download.py edges2handbags
-
-Download Edges2Shoes dataset using 
-
-    $ python ./datasets/download.py edges2shoes
-
-To train Edges2Handbags,
-
-    $ python ./discogan/image_translation.py --task_name='edges2handbags'
-
-To train Edges2Shoes,
-
-    $ python ./discogan/image_translation.py --task_name='edges2shoes' 
-
-To train Handbags2Shoes,
-
-    $ python ./discogan/image_translation.py --task_name='Handbags2Shoes' --starting_rate=0.5
-
-### Facescrub
-Download Facescrub dataset using 
-
-    $ python ./datasets/download.py facescrub
-
-To train gender conversion,
-
-    $ python ./discogan/image_translation.py --task_name='facescrub'
-
-### Car, Face
-Download [3D car dataset](http://www.scottreed.info/files/nips2015-analogy-data.tar.gz) used in [Deep Visual Analogy-Making]( http://www-personal.umich.edu/~reedscot/nips2015.pdf), and [3D face dataset](http://faces.cs.unibas.ch/bfm/main.php?nav=1-2&id=downloads) into ./datasets folder and extract them.
-
-To train Car2Car translation,
-
-    $ python ./discogan/angle_pairing.py --task_name='car2car' 
-
-To train Car2Face translation,
-
-    $ python ./discogan/angle_pairing.py --task_name='car2face'
-
-Run script.sh in order to train a model using other datasaet, after uncommenting corresponding line.
-
-Results
-=============
-All example results show x_A, x_AB, x_ABA and x_B, x_BA, x_BAB
-
-Example results of hair color conversion
-
-<img src="assets/b2b.png" width="600px">
-
-Example results of gender conversion (CelebA)
-
-<img src="assets/m2f.png" width="600px">
-
-Example results of Edges2Handbags 
-
-<img src="assets/edges2handbags.png" width="600px">
-
-Example results of Handbags2Shoes 
-
-<img src="assets/h2s.png" width="600px">
-
-Example results of gender conversion (Facescrub)
-
-<img src="assets/facescrub.png" width="600px">
-
-Example results of Car2Face 
-
-<img src="assets/car_face.png" width="600px">
+Issues
+------
+I hade to comment out `import ipdb` in model.py, since it threw an error while developing of this demo.
