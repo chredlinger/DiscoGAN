@@ -10,7 +10,8 @@ Additional Prerequisites
 
 Usage
 -----
-```usage: run_inference.py [-h] [--modelA MODELA] [--modelB MODELB]
+```
+usage: run_inference.py [-h] [--modelA MODELA] [--modelB MODELB]
                         [--face_cascade FACE_CASCADE] [--device DEVICE]
                         [--size SIZE] [--output OUTPUT] 
 ```
