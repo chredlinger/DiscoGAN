@@ -9,10 +9,11 @@ Additional Prerequisites
    - Pygame
 
 Usage
-------------
+-----
 ```usage: run_inference.py [-h] [--modelA MODELA] [--modelB MODELB]
                         [--face_cascade FACE_CASCADE] [--device DEVICE]
-                        [--size SIZE] [--output OUTPUT] ```
+                        [--size SIZE] [--output OUTPUT] 
+```
 The currently used models are trained on the facescrub dataset for gender conversion (modelA: female -> male, modelB: male -> female).
 Just add your trained generators to the `/models/` path and set the parameters while calling `run_inference.py`
 
