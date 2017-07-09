@@ -20,7 +20,8 @@ usage: run_inference.py [-h] [--modelA MODELA] [--modelB MODELB]
                         [--face_cascade FACE_CASCADE] [--device DEVICE]
                         [--size SIZE] [--output OUTPUT] 
 ```
-The currently used and uploaded models are trained on the facescrub dataset for gender conversion (modelA: female --> male, modelB: male --> female).
+The currently used and uploaded models are trained on the facescrub dataset for gender conversion 
+(modelA: female --> male, modelB: male --> female).
 
 To start the demo with the default models, cd into `./discogan` and call the script `run_inference.py`
 
