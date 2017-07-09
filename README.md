@@ -20,7 +20,8 @@ usage: run_inference.py [-h] [--modelA MODELA] [--modelB MODELB]
                         [--face_cascade FACE_CASCADE] [--device DEVICE]
                         [--size SIZE] [--output OUTPUT] 
 ```
-The currently used and uploaded models are trained on the facescrub dataset for gender conversion (modelA: female --> male, modelB: male --> female).
+The currently used and uploaded models are trained on the facescrub dataset for gender conversion 
+(modelA: female --> male, modelB: male --> female).
 
 To start the demo with the default models, cd into `./discogan` and call the script `run_inference.py`
 
@@ -35,11 +36,11 @@ You can also adjust the webcam resolution defined in `run_inference.py` as `CAPT
 
 Run the demo
 ----------------
-Use the following keys for:
-    - ESC: close application
-    - s: switch between both generators (male -> female, female -> male)
-    - p: pause application
-    - r: start recording. Each frame will be saved as `%03d.jpg % counter` in `./recording/`. Old frames will be overwritten.
+During the demo you can use the following keys:
+   - ESC: close application
+   - s: switch between both generators (male -> female, female -> male)
+   - p: pause application
+   - r: start recording. Each frame will be saved in the format (`%03d.jpg % counter`) under `./recording/`. Note: Old frames will be overwritten.
 
 You can easily convert the recorded frames to a .gif with ```convert -delay 6 -loop 0 *.jpg myimage.gif```.
 
