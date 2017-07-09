@@ -41,9 +41,7 @@ Use the following keys for:
     - p: pause application
     - r: start recording. Each frame will be saved as `%03d.jpg % counter` in `./recording/`. Old frames will be overwritten.
 
-You can easily convert the recorded frames to a .gif with ```
-convert -delay 6 -loop 0 *.jpg myimage.gif
-```
+You can easily convert the recorded frames to a .gif with ```convert -delay 6 -loop 0 *.jpg myimage.gif```.
 
 Don't forget to set the right delay param based on your FPS. See [ImageMagick Delay param](http://www.imagemagick.org/script/command-line-options.php#delay) for more information.
 
