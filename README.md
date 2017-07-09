@@ -37,10 +37,10 @@ You can also adjust the webcam resolution defined in `run_inference.py` as `CAPT
 Run the demo
 ----------------
 Use the following keys for:
-    - ESC: close application
-    - s: switch between both generators (male -> female, female -> male)
-    - p: pause application
-    - r: start recording. Each frame will be saved as `%03d.jpg % counter` in `./recording/`. Old frames will be overwritten.
+   - ESC: close application
+   - s: switch between both generators (male -> female, female -> male)
+   - p: pause application
+   - r: start recording. Each frame will be saved as `%03d.jpg % counter` in `./recording/`. Old frames will be overwritten.
 
 You can easily convert the recorded frames to a .gif with ```convert -delay 6 -loop 0 *.jpg myimage.gif```.
 
